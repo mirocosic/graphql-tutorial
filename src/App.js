@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import Post from './Post';
 import NewPostForm from './NewPostForm';
 import PostsList from './PostsList';
 import logo from './logo.svg';
 import './App.css';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
-
-
 
 class App extends Component {
 
@@ -23,9 +19,6 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
-    const title = this.state.form.title;
-    const description = this.state.form.description;
 
     this.props.client.mutate({
       query: gql`
@@ -55,7 +48,7 @@ class App extends Component {
         <h1>Posts:</h1>
         <PostsList />
         <NewPostForm />
-      
+
       </div>
     );
   }
